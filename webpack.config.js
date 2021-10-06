@@ -1,4 +1,3 @@
-const HtmlWebPackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 
 const deps = require("./package.json").dependencies;
@@ -40,11 +39,11 @@ module.exports = {
 
   plugins: [
     new ModuleFederationPlugin({
-      name: "RocketScience",
+      name: "DevProfileTwo",
       filename: "remoteEntry.js",
       remotes: {},
       exposes: {
-        "./NewComponentTemplate": "./src/components/NewComponentTemplate"
+        "./Profile": "./src/components/Profile",
       },
       shared: {
         ...deps,
@@ -56,7 +55,11 @@ module.exports = {
           singleton: true,
           requiredVersion: deps["react-dom"],
         },
+        "styled-components": {
+          singleton: true,
+          requiredVersion: deps["styled-components"],
+        },
       },
-    })
+    }),
   ],
 };

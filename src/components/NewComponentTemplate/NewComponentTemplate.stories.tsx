@@ -60,32 +60,32 @@ Secondary.parameters = {
 //
 // ==============================
 
-const ModFedTemplate: ComponentStory<typeof NewComponentTemplate> = (args) => (
-  <DynamicRemoteContainer {...args} />
-);
+// const ModFedTemplate: ComponentStory<typeof NewComponentTemplate> = (args) => (
+//   <DynamicRemoteContainer {...args} />
+// );
 
-export const ModFedPrimary = ModFedTemplate.bind({});
-ModFedPrimary.args = {
-  text: "Hello World",
-  url: "http://localhost:3001/remoteEntry.js",
-  scope: "RocketScience",
-  module: "./NewComponentTemplate",
-};
-ModFedPrimary.parameters = {
-  readme: {
-    sidebar: Readme,
-  },
-};
+// export const ModFedPrimary = ModFedTemplate.bind({});
+// ModFedPrimary.args = {
+//   text: "Hello World",
+//   url: "http://localhost:3001/remoteEntry.js",
+//   scope: "RocketScience",
+//   module: "./NewComponentTemplate",
+// };
+// ModFedPrimary.parameters = {
+//   readme: {
+//     sidebar: Readme,
+//   },
+// };
 
-export const ModFedSecondary = ModFedTemplate.bind({});
-ModFedSecondary.args = {
-  text: "",
-  url: "http://localhost:3001/remoteEntry.js",
-  scope: "RocketScience",
-  module: "./NewComponentTemplate",
-};
-ModFedSecondary.parameters = {
-  readme: {
-    sidebar: Readme,
-  },
-};
+// export const ModFedSecondary = ModFedTemplate.bind({});
+// ModFedSecondary.args = {
+//   text: "",
+//   url: "http://localhost:3001/remoteEntry.js",
+//   scope: "RocketScience",
+//   module: "./NewComponentTemplate",
+// };
+// ModFedSecondary.parameters = {
+//   readme: {
+//     sidebar: Readme,
+//   },
+// };
