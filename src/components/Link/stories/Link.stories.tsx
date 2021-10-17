@@ -26,6 +26,7 @@ Primary.parameters = {
   readme: {
     sidebar: Readme,
   },
+  jest: ["Link.test.tsx"],
 };
 
 export const Secondary = Template.bind({});
@@ -36,4 +37,5 @@ Secondary.parameters = {
   readme: {
     sidebar: Readme,
   },
+  jest: ["Link.test.tsx"],
 };

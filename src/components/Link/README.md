@@ -1,20 +1,18 @@
 # 📝 Summary
 
-This is an example component intended to outline the expected code quality for a new component introduced to the code base.
+Link is a basic feature level component.
 
 # 💻 Usage
 
-```jsx
-// Replace the file path with the correct filepath to Button
-import Button from './filePathTo/Button';
+```tsx
+import Link from "./components/Link";
 
-// Replace the string provided to text with your own
-<Button text='text content here' />
+<Link text="github" href="https://github.com/ahoward2" />;
 ```
 
-# 📩 Button Props
+# 📩 Link Props
 
-| Name | Required | Type   | DefaultValue | Description  |
-| ---- | -------- | ------ | ------------ | ------------ |
-| text | ❌       | string | -            | button label |
-    
+| Name | Required | Type   | DefaultValue             | Description              |
+| ---- | -------- | ------ | ------------------------ | ------------------------ |
+| text | ❌       | string | "no prop value provided" | String of text for label |
+| href | ❌       | string | "#"                      | Url to link to           |

@@ -1,14 +1,11 @@
 # 📝 Summary
-This is an example component intended to outline the expected code quality for a new component introduced to the code base.
+
+Profile is a feature level component that gets exposed as a remote module. It takes no props.
+
 # 💻 Usage
-```jsx
-// Replace the file path with the correct filepath to Profile
-import Profile from './filePathTo/Profile';
-// Replace the string provided to text with your own
-<Profile text='text content here' />
+
+```tsx
+import Profile from "./components/Profile";
+
+<Profile />;
 ```
-# 📩 Button Props
-| Name | Required | Type   | DefaultValue | Description  |
-| ---- | -------- | ------ | ------------ | ------------ |
-| text | ❌       | string | -            | button label |
-    

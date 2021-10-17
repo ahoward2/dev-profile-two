@@ -52,4 +52,5 @@ ModFedPrimary.parameters = {
   readme: {
     sidebar: Readme,
   },
+  jest: ["Profile.test.tsx"],
 };

@@ -12,7 +12,7 @@ interface LinkProps {
 const Link = ({ text, href }: LinkProps) => {
   return (
     <LinkWrapper>
-      <a className="styled-button" href={href}>
+      <a className="styled-button" href={href ?? "#"}>
         {text ? text : "no prop value provided"}
       </a>
     </LinkWrapper>

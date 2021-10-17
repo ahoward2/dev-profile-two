@@ -2,8 +2,10 @@ import React from "react";
 
 // --------- Types --------- //
 export type LegacyShareScope = {
-  [key: string]: { // Name of module intended for sharing
-    [version: string]: { // Version of module intended for sharing
+  [key: string]: {
+    // Name of module intended for sharing
+    [version: string]: {
+      // Version of module intended for sharing
       get: () => Promise<any>; // Getter function to retrieve module
       loaded: boolean;
       from: string;
@@ -20,20 +22,22 @@ declare global {
   /* Here, declare things that go in the global namespace, or augment
    * existing declarations in the global namespace
    */
-  interface Window { // Augment existing Window declaration
-    RocketScience?: ImportObject; 
+  interface Window {
+    // Augment existing Window declaration
+    DevProfileTwo?: ImportObject;
   }
-  interface ImportScope { // Global key names of ImportObjects 
-    RocketScience: 'RocketScience';
+  interface ImportScope {
+    // Global key names of ImportObjects
+    DevProfileTwo: "DevProfileTwo";
   }
-};
-  
+}
+
 export interface DynamicRemoteContainerProps {
   url: string;
   scope: keyof ImportScope;
   module: string;
   componentProps?: { [key: string]: any } | any;
-};
+}
 // ------- End Types ------- //
 
 /**
@@ -85,7 +89,6 @@ const useDynamicScript = (url: string) => {
   };
 };
 
-
 /**
  * Container component that fetches and loads a module using a dynamic script
  * @param url source url to remoteEntry script
@@ -100,7 +103,7 @@ const DynamicRemoteContainer = ({
   module: targetModule,
   componentProps,
 }: DynamicRemoteContainerProps) => {
-  const { ready, failed } = useDynamicScript(url ?? '');
+  const { ready, failed } = useDynamicScript(url ?? "");
 
   if (!ready) {
     return <h2>Loading dynamic script: {url}</h2>;
@@ -112,9 +115,12 @@ const DynamicRemoteContainer = ({
 
   const Component = React.lazy(
     () =>
-      new Promise((resolve) => { // Shared modules from webpack 4 like react or styled-components
+      new Promise((resolve) => {
+        // Shared modules from webpack 4 like react or styled-components
         const moduleResolve = resolve;
         const react = require("react");
+        const reactDom = require("react-dom");
+        const styledComponents = require("styled-components");
         const legacyShareScope: LegacyShareScope = {
           react: {
             [react.version]: {
@@ -123,8 +129,24 @@ const DynamicRemoteContainer = ({
               from: "webpack4",
             },
           },
+          "react-dom": {
+            [reactDom.version]: {
+              get: () => new Promise((resolve) => resolve(() => reactDom)),
+              loaded: true,
+              from: "webpack4",
+            },
+          },
+          "styled-components": {
+            [styledComponents.version]: {
+              get: () =>
+                new Promise((resolve) => resolve(() => styledComponents)),
+              loaded: true,
+              from: "webpack4",
+            },
+          },
         };
-        new Promise((resolve) => { // Initialize with legacyShareScope then get targetModule
+        new Promise((resolve) => {
+          // Initialize with legacyShareScope then get targetModule
           resolve(window[scope]?.init(legacyShareScope));
         }).then(() => {
           window[scope]?.get(targetModule).then((factory: () => any) => {

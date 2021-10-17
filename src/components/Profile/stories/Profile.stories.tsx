@@ -26,4 +26,5 @@ Primary.parameters = {
   readme: {
     sidebar: Readme,
   },
+  jest: ["Profile.test.tsx"],
 };
